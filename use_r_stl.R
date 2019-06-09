@@ -7,8 +7,13 @@ library("imputeTS")
 # Fetch command line arguments
 myArgs <- commandArgs(trailingOnly = TRUE)
 
+# cat(if (myArgs[3]=="periodic") { "hey"} else {"nay"})
+
 # csv
 mydata <- read.csv(file=myArgs[1],stringsAsFactors=FALSE)
+
+cat(length(mydata$value))
+
 
 # convert BeginTime column to time 
 mydata$timestamp <- as.POSIXct(mydata$timestamp)
@@ -17,16 +22,33 @@ mydata$timestamp <- as.POSIXct(mydata$timestamp)
 # n.p.
 np = as.numeric(myArgs[2])
 # s.window
-swindow = as.numeric(myArgs[3])
+if (myArgs[3]=="periodic") {
+    swindow="periodic"
+} else {
+    swindow=as.numeric(myArgs[3])
+}
+# s.degree
+sdegree = as.numeric(myArgs[4])
+# t.window
+twindow = as.numeric(myArgs[5])
+# t.degree
+tdegree = as.numeric(myArgs[6])
+# inner
+inner = as.numeric(myArgs[7])
 # outer
-outer = as.numeric(myArgs[4])
+outer = as.numeric(myArgs[8])
+
 # missing
-missing = as.logical(myArgs[5])
+missing = as.logical(myArgs[9])
 # fill_option
-fill_option = myArgs[6]
+fill_option = myArgs[10]
+# name to give output csv
+name = myArgs[11]
+
+# cat(length(mydata$value))
 
 # use stl
-stltest <- stlplus(mydata$value, t=mydata$timestamp, n.p=np,s.window=swindow,outer=outer)
+stltest <- stlplus(x=mydata$value, t=mydata$timestamp, n.p=np, s.window=swindow, s.degree = sdegree, t.window = twindow, t.degree = tdegree, inner = inner, outer = outer)
 
 stltest$data$timestamp <- mydata$timestamp
 
@@ -38,6 +60,7 @@ if (missing) {
     cat(" no missing ")
 }
 
-write.csv(file="r_dfs/df_to_csv_stl.csv",x=stltest$data)
+filename=paste("r_dfs/df_to_csv_stl_", name, ".csv",sep="")
+write.csv(file=filename,x=stltest$data)
 
 cat("True")

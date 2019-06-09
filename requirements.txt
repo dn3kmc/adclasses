@@ -118,6 +118,6 @@ Werkzeug==0.14.1
 widgetsnbextension==3.2.1
 wrapt==1.10.11
 git+git://github.com/thu-ml/zhusuan.git
-git+git://github.com/haowen-xu/tfsnippet.git
+git+git://github.com/haowen-xu/tfsnippet.git@v0.1.2
 git+git://github.com/haowen-xu/donut.git
 git+git://github.com/hildensia/bayesian_changepoint_detection.git
