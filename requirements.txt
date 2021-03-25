@@ -81,7 +81,7 @@ pytest==3.8.2
 pytest-cov==2.6.0
 python-dateutil==2.7.3
 pytz==2018.4
-PyYAML==3.13
+PyYAML==5.4
 pyzmq==17.0.0
 qtconsole==4.3.1
 requests==2.18.4
