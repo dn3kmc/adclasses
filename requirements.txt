@@ -68,7 +68,7 @@ prompt-toolkit==1.0.15
 protobuf==3.6.0
 ptyprocess==0.5.2
 py==1.6.0
-Pygments==2.2.0
+Pygments==2.7.4
 pykalman==0.9.5
 pymc==2.3.6
 pymc3==3.4.1
