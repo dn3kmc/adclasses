@@ -65,7 +65,7 @@ pickleshare==0.7.4
 pluggy==0.7.1
 pomegranate==0.10.0
 prompt-toolkit==1.0.15
-protobuf==3.6.0
+protobuf==3.18.3
 ptyprocess==0.5.2
 py==1.6.0
 Pygments==2.2.0
